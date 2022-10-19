@@ -1,0 +1,198 @@
+#logo {
+
+    animation: zoom 5s;
+    width: 475px;
+}
+
+@keyframes zoom {
+
+    from {opacity: 0;}
+    to {opacity: 1;}
+
+    from {width: 25px}
+    to {width: 475px}
+
+}
+
+/* animiation done */
+
+body {
+
+    font-family: 'Poppins', serif;
+    background-color: #f1f1f1;
+    background-image: url("../images/concrete_seamless.png");        
+
+}
+
+header {
+    
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+
+}
+
+
+.nav_links {
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+
+a:visited{
+
+    color: #0000ff;
+}
+
+
+/* using > ensures I will only style header elements that are DIRECT children of my card class */
+
+.card > header {  
+
+padding: 50px 0px;
+border-radius: 50px 50px 0px 0px; /* cant have only two values here because that would style the whole border so I must add 0px for the bottom right corner and bottom left corner */
+
+background-color: #288088;
+border: 2px solid #45ADAD;   
+
+}
+
+
+.card {
+    
+    display: flex;
+    flex-basis: 425px;
+    flex-direction: column;
+    border-radius: 50px 50px 0px 0px;
+
+}
+
+.pricing {
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.gallery img{
+
+    margin: 10px; /* only need one value for all sides */
+    width: 300px;
+    border: 10px solid #50C7C7
+
+}
+
+/* got help from Avery Feldman (brother) on this one and some other flex related issues */ 
+.gallery {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+
+}
+
+/* now onto the specifications for when a screen is bigger than 900px wide */
+@media screen and (min-width: 900px) {    
+
+
+    header {
+
+        flex-direction: row;
+        justify-content: space-between;
+
+        }
+
+    .nav_links {
+    
+        flex-direction: row;
+
+    }
+
+/* GET HELP ON PRICING AND CARD */ 
+    .pricing {
+
+        flex-wrap: nowrap;
+    }
+
+    .card {
+
+        flex-basis: 275px;  
+
+    } 
+
+ 
+    body > header {
+
+        top: 0;
+        position: sticky;   /* positions the first header at the top regardless of the user scrolling down! */
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+
+    #logo {
+
+        animation: none;  /* I'm assuming this is all we have to do for this seciton */
+
+    }
+}
+
+/* this overrides styles when printing */
+@media print {
+
+    body {
+
+        background-image: none;
+        font-family: Arial, Helvetica;
+    }
+    
+    .nav_links {
+
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    nav {
+
+        width: 100%;
+    }
+
+    .pricing {
+        
+        flex-wrap: nowrap;
+
+    }
+
+    .card {
+
+        flex-basis: 325px;
+        align-self: flex-end;
+        border: 2px solid #45ADDD
+
+    }
+
+    #gallery {
+
+        display: none;
+    }
+
+    .gallery {
+
+        display: none;
+    }
+
+
+    .card ul {
+
+        content: 👍  /* inputting the raw value did not work so did this instead */
+
+    }
+}
